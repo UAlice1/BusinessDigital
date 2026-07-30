@@ -74,23 +74,7 @@ export default function ResultsPage() {
       <Navbar />
       <div className="pt-14">
 
-        {/* Breadcrumb — no border */}
-        <div className="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3 text-xs text-gray-500 font-medium">
-            <button onClick={() => router.push('/')} className="hover:text-primary transition-colors">Home</button>
-            <span className="text-gray-300">/</span>
-            <span className="text-gray-700">{business.name}</span>
-            <span className="text-gray-300">/</span>
-            <span className="text-primary font-semibold">Results</span>
-          </div>
-          {!isLoading && recommendations.length > 0 && (
-            <button onClick={handleDownloadCertificate} className="btn-primary text-xs py-2 px-4">
-              Get Certificate
-            </button>
-          )}
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 py-12">
+        <div className="max-w-7xl mx-auto px-6 py-12">
           {isLoading ? (
             <div className="text-center py-32">
               <LoadingSpinner size="lg" />

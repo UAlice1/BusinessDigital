@@ -56,7 +56,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <div className="pt-16">
+      <div className="pt-0">
         <HeroSection onSelect={handleBusinessSelected} isLoading={isCreatingAssessment} />
       </div>
 

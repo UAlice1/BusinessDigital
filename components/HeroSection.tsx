@@ -26,11 +26,10 @@ export default function HeroSection({ onSelect, isLoading }: Props) {
 
       {/* Headline */}
       <h1
-        className="font-sans font-bold text-gray-900 leading-tight text-center mb-10 whitespace-nowrap"
-        style={{ fontSize: 'clamp(1.5rem, 3.5vw, 4rem)' }}
+        className="font-sans font-bold text-gray-900 leading-tight text-center mb-10"
+        style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
       >
-        Is Your Business{' '}
-        <span className="text-gray-900">Digitally Ready?</span>
+        Is Your Business<br />Digitally Ready?
       </h1>
 
       {/* Search bar */}
