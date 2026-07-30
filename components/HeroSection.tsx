@@ -46,10 +46,14 @@ export default function HeroSection({ onSelect, isLoading }: Props) {
 
         {/* Quick links */}
         <div className="flex items-center justify-center gap-6 mt-6">
-          {['How It Works', 'Pricing', 'About'].map((label) => (
+          {[
+            { label: 'How It Works', href: '/how-it-works' },
+            { label: 'Pricing',      href: '/pricing'      },
+            { label: 'About',        href: '/about'        },
+          ].map(({ label, href }) => (
             <a
               key={label}
-              href="#"
+              href={href}
               className="text-sm text-gray-400 hover:text-primary transition-colors font-medium"
             >
               {label}

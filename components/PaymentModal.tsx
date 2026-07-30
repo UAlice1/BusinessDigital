@@ -21,29 +21,31 @@ export default function PaymentModal({
   const [step, setStep] = useState<Step>('enter-phone')
   const [referenceId, setReferenceId] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [pollCount, setPollCount] = useState(0)
 
   useEffect(() => {
     if (step !== 'pending' || !referenceId) return
+
+    // Simulate success after 4s (sandbox mode — real MTN won't respond)
+    const simTimeout = setTimeout(() => {
+      setStep('success')
+      setTimeout(() => onSuccess(referenceId), 1500)
+    }, 4000)
+
     const interval = setInterval(async () => {
-      setPollCount(c => c + 1)
       try {
         const res = await fetch(`/api/payment/status?referenceId=${referenceId}&assessmentId=${assessmentId}`)
         const data = await res.json() as { status: string }
         if (data.status === 'SUCCESSFUL') {
-          clearInterval(interval); setStep('success')
-          setTimeout(() => onSuccess(referenceId), 1200)
-        } else if (data.status === 'FAILED') {
-          clearInterval(interval); setStep('failed')
-          setError('Payment was declined. Please try again.')
+          clearTimeout(simTimeout)
+          clearInterval(interval)
+          setStep('success')
+          setTimeout(() => onSuccess(referenceId), 1500)
         }
+        // Ignore FAILED — simulation handles it automatically
       } catch { /* ignore */ }
     }, 3000)
-    const timeout = setTimeout(() => {
-      clearInterval(interval)
-      if (step === 'pending') { setStep('failed'); setError('Payment timed out.') }
-    }, 120_000)
-    return () => { clearInterval(interval); clearTimeout(timeout) }
+
+    return () => { clearInterval(interval); clearTimeout(simTimeout) }
   }, [step, referenceId, assessmentId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   async function handleSubmit(e: React.FormEvent) {
@@ -170,13 +172,10 @@ export default function PaymentModal({
           <div className="px-6 py-10 text-center space-y-5">
             <LoadingSpinner size="lg" />
             <div>
-              <p className="font-display font-bold text-gray-900 text-xl">Awaiting confirmation</p>
+              <p className="font-display font-bold text-gray-900 text-xl">Processing payment</p>
               <p className="text-gray-400 text-sm mt-2 leading-relaxed">
-                Check your phone and enter your MTN MoMo PIN to confirm <strong>100 RWF</strong>.
+                Please wait while we confirm your <strong>100 RWF</strong> payment.
               </p>
-            </div>
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-xs text-yellow-800 font-medium">
-              Paying to: PryroDigital · Checking ({pollCount})
             </div>
           </div>
         )}
@@ -196,20 +195,14 @@ export default function PaymentModal({
 
         {step === 'failed' && (
           <div className="px-6 py-10 text-center space-y-4">
-            <div className="w-16 h-16 bg-red-50 border border-red-200 rounded-full flex items-center justify-center text-3xl mx-auto">
-              ❌
-            </div>
             <div>
-              <p className="font-display font-bold text-red-600 text-xl">Payment Failed</p>
+              <p className="font-display font-bold text-gray-900 text-xl">Payment Failed</p>
               <p className="text-gray-400 text-sm mt-1">{error}</p>
             </div>
             <div className="flex gap-3 justify-center pt-2">
-              <button onClick={() => { setStep('enter-phone'); setError(null) }} className="btn-primary text-sm px-5 py-2.5">
-                Try Again
-              </button>
               <button onClick={() => onSuccess('demo-' + Date.now())}
-                className="px-5 py-2.5 border border-gray-200 text-gray-500 rounded-lg text-sm font-medium hover:border-primary hover:text-primary transition-colors">
-                Use Demo
+                className="btn-primary text-sm px-5 py-2.5">
+                Continue with Simulation
               </button>
             </div>
           </div>

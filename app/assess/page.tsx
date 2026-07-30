@@ -40,8 +40,7 @@ export default function AssessPage() {
       <div className="pt-16">
 
         {/* Breadcrumb */}
-        <div className="border-b border-gray-100">
-          <div className="max-w-2xl mx-auto px-6 py-3 flex items-center gap-3 text-xs text-gray-500 font-medium">
+        <div className="max-w-2xl mx-auto px-6 py-3 flex items-center gap-3 text-xs text-gray-500 font-medium">
             <button onClick={() => router.push('/')} className="hover:text-primary transition-colors">
               Home
             </button>
@@ -49,11 +48,7 @@ export default function AssessPage() {
             <span className="text-gray-700 truncate max-w-[160px]">{business.name}</span>
             <span className="text-gray-300">/</span>
             <span className="text-primary font-semibold">Assessment</span>
-            <span className="ml-auto border border-gray-200 rounded-md px-3 py-1 shrink-0">
-              Step 1 of 2
-            </span>
           </div>
-        </div>
 
         {/* Intro header */}
         <div className="max-w-2xl mx-auto px-4 pt-10 pb-4 text-center">
