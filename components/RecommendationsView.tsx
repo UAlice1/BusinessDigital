@@ -7,15 +7,15 @@ interface Recommendation {
 interface Business { name: string; sector: string; location: string }
 interface Props { business: Business; recommendations: Recommendation[]; initialScore: number; onDownloadCertificate: () => void }
 
-const priorityBorder = { High: 'border-red-300', Medium: 'border-yellow-300', Low: 'border-gray-200' }
-const priorityBadge  = { High: 'text-red-700 bg-red-50 border border-red-200', Medium: 'text-yellow-700 bg-yellow-50 border border-yellow-200', Low: 'text-gray-600 bg-gray-50 border border-gray-200' }
-const costBadge      = { Low: 'text-green-700 bg-green-50 border border-green-200', Medium: 'text-yellow-700 bg-yellow-50 border border-yellow-200', High: 'text-red-700 bg-red-50 border border-red-200' }
+const priorityBorder = { High: 'border-primary', Medium: 'border-gray-300', Low: 'border-gray-200' }
+const priorityBadge  = { High: 'text-primary bg-primary-light border border-primary/30', Medium: 'text-gray-700 bg-gray-100 border border-gray-200', Low: 'text-gray-500 bg-gray-50 border border-gray-200' }
+const costBadge      = { Low: 'text-primary bg-primary-light border border-primary/30', Medium: 'text-gray-700 bg-gray-100 border border-gray-200', High: 'text-gray-700 bg-gray-100 border border-gray-200' }
 
 function getScoreInfo(s: number) {
-  if (s >= 80) return { label: 'Digital Leader',     color: '#16a34a' }
+  if (s >= 80) return { label: 'Digital Leader',     color: '#2563eb' }
   if (s >= 60) return { label: 'Digitally Active',   color: '#2563eb' }
-  if (s >= 40) return { label: 'Digitally Emerging', color: '#ca8a04' }
-  return             { label: 'Digital Beginner',    color: '#dc2626' }
+  if (s >= 40) return { label: 'Digitally Emerging', color: '#2563eb' }
+  return             { label: 'Digital Beginner',    color: '#2563eb' }
 }
 
 export default function RecommendationsView({ business, recommendations, initialScore, onDownloadCertificate }: Props) {
@@ -39,11 +39,11 @@ export default function RecommendationsView({ business, recommendations, initial
       {/* Completion banner */}
       <div className="card p-5 border-2 border-primary flex items-center justify-between gap-4 flex-wrap">
         <div>
-          <h3 className="font-display font-bold text-lg text-gray-900">🎉 Assessment Complete</h3>
+          <h3 className="font-display font-bold text-lg text-gray-900">Assessment Complete</h3>
           <p className="text-gray-600 text-sm mt-1">Your AI-powered digitalization roadmap is ready.</p>
         </div>
         <button onClick={onDownloadCertificate} className="btn-primary shrink-0">
-          🎓 Get Certificate
+          Get Certificate
         </button>
       </div>
 
@@ -66,7 +66,7 @@ export default function RecommendationsView({ business, recommendations, initial
                       {rec.estimatedCost} Cost
                     </span>
                     <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-md font-medium">
-                      ⏱ {rec.timeline}
+                      {rec.timeline}
                     </span>
                   </div>
                   <h4 className="font-bold text-gray-900 mb-1">{rec.action}</h4>
@@ -92,7 +92,7 @@ export default function RecommendationsView({ business, recommendations, initial
       <div className="text-center py-8 border-t border-gray-100">
         <p className="text-gray-500 text-sm mb-4">Save your results and share your digital transformation journey.</p>
         <button onClick={onDownloadCertificate} className="btn-primary px-8 py-4 text-base">
-          🎓 Download Your Certificate
+          Download Your Certificate
         </button>
       </div>
     </div>

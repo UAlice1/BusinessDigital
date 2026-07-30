@@ -70,7 +70,7 @@ export default function ResultsPage() {
               <span className="text-xs text-gray-500 border border-gray-200 rounded-md px-3 py-1 font-medium">Step 3 of 3</span>
               {!isLoading && recommendations.length > 0 && (
                 <button onClick={handleDownloadCertificate} className="btn-primary text-xs py-2 px-4">
-                  🎓 Get Certificate
+                  Get Certificate
                 </button>
               )}
             </div>
