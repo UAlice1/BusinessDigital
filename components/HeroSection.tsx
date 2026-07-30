@@ -65,3 +65,4 @@ export default function HeroSection({ onSelect, isLoading }: Props) {
     </section>
   )
 }
+

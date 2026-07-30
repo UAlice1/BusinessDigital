@@ -90,7 +90,7 @@ export default function AssessmentForm({ business, onSubmit }: Props) {
 
       {/* Question */}
       <div className="card p-6 min-h-64">
-        <p className="font-display font-bold text-gray-900 text-xl mb-5 leading-snug">{q.question}</p>
+        <p className="font-sans font-bold text-gray-900 text-xl mb-5 leading-snug">{q.question}</p>
 
         {q.type === 'single' && q.options && (
           <div className="space-y-2">
@@ -151,7 +151,7 @@ export default function AssessmentForm({ business, onSubmit }: Props) {
       {/* User info on last question */}
       {isLast && (
         <div className="card p-6 space-y-4">
-          <p className="font-display font-bold text-gray-900 text-lg">
+          <p className="font-sans font-bold text-gray-900 text-lg">
             Your Details <span className="text-gray-400 font-normal text-base">(for your certificate)</span>
           </p>
           {[
@@ -192,3 +192,4 @@ export default function AssessmentForm({ business, onSubmit }: Props) {
     </div>
   )
 }
+

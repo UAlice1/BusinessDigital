@@ -47,7 +47,7 @@ export default function ScoreCard({ business, analysis, onStartAssessment }: Pro
       <div className="card p-6">
         <div className="flex items-center gap-3 mb-6">
           <div>
-            <h2 className="font-display font-bold text-xl text-gray-900">{business.name}</h2>
+            <h2 className="font-sans font-bold text-xl text-gray-900">{business.name}</h2>
             <p className="text-sm text-gray-500">{business.sector} · {business.location}</p>
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function ScoreCard({ business, analysis, onStartAssessment }: Pro
 
       {/* CTA — payment already done, just continue */}
       <div className="card p-8 text-center border-2 border-primary">
-        <h3 className="font-display font-bold text-2xl text-gray-900 mb-2">
+        <h3 className="font-sans font-bold text-2xl text-gray-900 mb-2">
           Ready to get your full report?
         </h3>
         <p className="text-gray-600 text-sm mb-6 max-w-md mx-auto">
@@ -119,3 +119,4 @@ export default function ScoreCard({ business, analysis, onStartAssessment }: Pro
     </div>
   )
 }
+

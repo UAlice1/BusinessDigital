@@ -53,7 +53,7 @@ export default function AssessPage() {
         {/* Intro header */}
         <div className="max-w-2xl mx-auto px-4 pt-10 pb-4 text-center">
           <p className="label-upper mb-2">Digital Readiness Assessment</p>
-          <h1 className="font-display font-bold text-2xl text-gray-900">{business.name}</h1>
+          <h1 className="font-sans font-bold text-2xl text-gray-900">{business.name}</h1>
           <p className="text-gray-400 text-sm mt-2">
             Answer the questions below honestly — your score and recommendations are based on your answers.
           </p>
@@ -72,3 +72,4 @@ export default function AssessPage() {
     </div>
   )
 }
+

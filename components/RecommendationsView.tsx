@@ -7,10 +7,6 @@ interface Recommendation {
 interface Business { name: string; sector: string; location: string }
 interface Props { business: Business; recommendations: Recommendation[]; initialScore: number; onDownloadCertificate: () => void }
 
-const priorityBorder = { High: 'border-primary', Medium: 'border-gray-300', Low: 'border-gray-200' }
-const priorityBadge  = { High: 'text-primary bg-primary-light border border-primary/30', Medium: 'text-gray-700 bg-gray-100 border border-gray-200', Low: 'text-gray-500 bg-gray-50 border border-gray-200' }
-const costBadge      = { Low: 'text-primary bg-primary-light border border-primary/30', Medium: 'text-gray-700 bg-gray-100 border border-gray-200', High: 'text-gray-700 bg-gray-100 border border-gray-200' }
-
 function getScoreInfo(s: number) {
   if (s >= 80) return { label: 'Digital Leader',     color: '#2563eb' }
   if (s >= 60) return { label: 'Digitally Active',   color: '#2563eb' }
@@ -26,7 +22,7 @@ export default function RecommendationsView({ business, recommendations, initial
       {/* Summary */}
       <div className="card p-5 flex items-center justify-between flex-wrap gap-4">
         <div>
-          <h2 className="font-display font-bold text-xl text-gray-900">{business.name}</h2>
+          <h2 className="font-sans font-bold text-xl text-gray-900">{business.name}</h2>
           <p className="text-sm text-gray-500 mt-0.5">{business.sector} · {business.location}</p>
         </div>
         <div className="text-center">
@@ -37,9 +33,9 @@ export default function RecommendationsView({ business, recommendations, initial
       </div>
 
       {/* Completion banner */}
-      <div className="card p-5 border-2 border-primary flex items-center justify-between gap-4 flex-wrap">
+      <div className="card p-5 flex items-center justify-between gap-4 flex-wrap">
         <div>
-          <h3 className="font-display font-bold text-lg text-gray-900">Assessment Complete</h3>
+          <h3 className="font-sans font-bold text-lg text-gray-900">Assessment Complete</h3>
           <p className="text-gray-600 text-sm mt-1">Your AI-powered digitalization roadmap is ready.</p>
         </div>
         <button onClick={onDownloadCertificate} className="btn-primary shrink-0">
@@ -50,37 +46,29 @@ export default function RecommendationsView({ business, recommendations, initial
       {/* Recommendations */}
       <div>
         <p className="label-upper mb-4">Your Digitalization Roadmap</p>
-        <div className="space-y-4">
+        <div className="space-y-0 divide-y divide-gray-100">
           {recommendations.map((rec, i) => (
-            <div key={i} className={`bg-white border-2 rounded-lg p-5 shadow-sm ${priorityBorder[rec.priority] ?? 'border-gray-200'}`}>
+            <div key={i} className="py-5">
               <div className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm shrink-0">
-                  {i + 1}
-                </div>
+                <span className="text-sm font-bold text-gray-400 shrink-0 w-5 pt-0.5">{i + 1}.</span>
                 <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <span className={`text-xs px-2 py-0.5 rounded-md font-semibold ${priorityBadge[rec.priority] ?? priorityBadge.Low}`}>
-                      {rec.priority} Priority
-                    </span>
-                    <span className={`text-xs px-2 py-0.5 rounded-md font-semibold ${costBadge[rec.estimatedCost] ?? costBadge.Low}`}>
-                      {rec.estimatedCost} Cost
-                    </span>
-                    <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-md font-medium">
-                      {rec.timeline}
-                    </span>
+                  <h4 className="font-semibold text-gray-900 text-sm mb-1">{rec.action}</h4>
+                  <p className="text-sm text-gray-500 mb-2 leading-relaxed">{rec.impact}</p>
+                  <div className="flex flex-wrap items-center gap-2 text-xs text-gray-400">
+                    <span>{rec.priority} Priority</span>
+                    <span>·</span>
+                    <span>{rec.estimatedCost} Cost</span>
+                    <span>·</span>
+                    <span>{rec.timeline}</span>
+                    {rec.tools?.length > 0 && (
+                      <>
+                        <span>·</span>
+                        {rec.tools.map((tool) => (
+                          <span key={tool} className="text-primary font-medium">{tool}</span>
+                        ))}
+                      </>
+                    )}
                   </div>
-                  <h4 className="font-bold text-gray-900 mb-1">{rec.action}</h4>
-                  <p className="text-sm text-gray-600 mb-3 leading-relaxed">{rec.impact}</p>
-                  {rec.tools?.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5">
-                      {rec.tools.map((tool) => (
-                        <span key={tool}
-                          className="text-xs text-primary border border-primary/30 bg-primary-light px-2 py-0.5 rounded-md font-medium">
-                          {tool}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
@@ -98,3 +86,4 @@ export default function RecommendationsView({ business, recommendations, initial
     </div>
   )
 }
+

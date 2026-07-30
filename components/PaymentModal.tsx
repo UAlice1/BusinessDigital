@@ -88,7 +88,7 @@ export default function PaymentModal({
               <div className="flex items-start justify-between">
                 <div>
                   <p className="label-upper mb-1">Unlock Assessment</p>
-                  <h2 className="font-display font-bold text-2xl text-gray-900">Pay 100 RWF</h2>
+                  <h2 className="font-sans font-bold text-2xl text-gray-900">Pay 100 RWF</h2>
                   <p className="text-gray-400 text-sm mt-1">Via MTN Mobile Money</p>
                 </div>
                 <button onClick={onClose} aria-label="Close"
@@ -172,7 +172,7 @@ export default function PaymentModal({
           <div className="px-6 py-10 text-center space-y-5">
             <LoadingSpinner size="lg" />
             <div>
-              <p className="font-display font-bold text-gray-900 text-xl">Processing payment</p>
+              <p className="font-sans font-bold text-gray-900 text-xl">Processing payment</p>
               <p className="text-gray-400 text-sm mt-2 leading-relaxed">
                 Please wait while we confirm your <strong>100 RWF</strong> payment.
               </p>
@@ -185,7 +185,7 @@ export default function PaymentModal({
             <div className="w-16 h-16 bg-green-50 border border-green-200 rounded-full flex items-center justify-center text-3xl mx-auto">
               ✅
             </div>
-            <p className="font-display font-bold text-green-700 text-xl">Payment Confirmed!</p>
+            <p className="font-sans font-bold text-green-700 text-xl">Payment Confirmed!</p>
             <p className="text-gray-400 text-sm">Running AI analysis on {businessName}…</p>
             <div className="pt-2">
               <LoadingSpinner size="sm" />
@@ -196,7 +196,7 @@ export default function PaymentModal({
         {step === 'failed' && (
           <div className="px-6 py-10 text-center space-y-4">
             <div>
-              <p className="font-display font-bold text-gray-900 text-xl">Payment Failed</p>
+              <p className="font-sans font-bold text-gray-900 text-xl">Payment Failed</p>
               <p className="text-gray-400 text-sm mt-1">{error}</p>
             </div>
             <div className="flex gap-3 justify-center pt-2">
@@ -211,3 +211,4 @@ export default function PaymentModal({
     </div>
   )
 }
+

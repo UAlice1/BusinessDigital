@@ -6,9 +6,9 @@ export default function Footer() {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 bg-primary rounded-md flex items-center justify-center">
-            <span className="font-display font-bold text-white text-xs">P</span>
+            <span className="font-sans font-bold text-white text-xs">P</span>
           </div>
-          <span className="font-display font-bold text-gray-900 text-sm">PryroDigital</span>
+          <span className="font-sans font-bold text-gray-900 text-sm">PryroDigital</span>
         </div>
 
         {/* Links */}
@@ -29,3 +29,4 @@ export default function Footer() {
     </footer>
   )
 }
+
