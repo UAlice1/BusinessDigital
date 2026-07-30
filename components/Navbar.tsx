@@ -36,28 +36,21 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 shrink-0">
+        <Link href="/" className="flex items-center gap-2.5 shrink-0">
           <Image
             src="/images/pryro.png"
             alt="Pryro logo"
-            width={32}
-            height={32}
-            className="object-contain"
+            width={56}
+            height={56}
+            className="object-contain w-14 h-14"
           />
-          <span className="font-sans font-bold text-gray-900 text-lg">Digital</span>
+          <span className="font-sans font-bold text-gray-900 text-2xl">Digital</span>
         </Link>
 
         {/* Right */}
         <div className="hidden md:flex items-center gap-3">
-          <a href="#" className="text-sm text-gray-600 hover:text-gray-900 transition-colors px-4 py-2 font-medium">
-            Login
-          </a>
-          <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-            className="btn-primary text-sm"
-          >
-            Get Started
+          <a href="/learn-more" className="btn-primary text-sm">
+            Learn More
           </a>
         </div>
 
@@ -82,9 +75,8 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden border-t border-gray-100 bg-white px-6 py-4 space-y-2">
-          <a href="#" className="block text-sm text-gray-600 hover:text-gray-900 py-1.5 font-medium">Login</a>
-          <a href="#" onClick={() => setOpen(false)} className="btn-primary block text-center text-sm">
-            Get Started
+          <a href="/learn-more" onClick={() => setOpen(false)} className="btn-primary block text-center text-sm">
+            Learn More
           </a>
         </div>
       )}

@@ -185,7 +185,7 @@ export default function AssessmentForm({ business, onSubmit }: Props) {
           <button onClick={handleSubmit} disabled={isSubmitting}
             className="flex-1 btn-primary py-3 disabled:opacity-50 flex items-center justify-center gap-2">
             {isSubmitting ? <LoadingSpinner size="sm"/> : null}
-            {isSubmitting ? 'Generating results…' : '🚀 Submit & Get Results'}
+            {isSubmitting ? 'Generating results…' : 'Submit & Get Results'}
           </button>
         )}
       </div>
