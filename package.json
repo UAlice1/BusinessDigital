@@ -1,0 +1,38 @@
+{
+  "name": "digital-assessment",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "prisma db push",
+    "db:generate": "prisma generate",
+    "db:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@prisma/client": "^5.8.1",
+    "axios": "^1.6.7",
+    "groq-sdk": "^0.3.3",
+    "next": "^14.2.29",
+    "puppeteer": "^21.11.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@types/uuid": "^9.0.7",
+    "autoprefixer": "^10.4.17",
+    "eslint": "^8",
+    "eslint-config-next": "^14.2.29",
+    "postcss": "^8.4.33",
+    "prisma": "^5.8.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Business {
+  id               String       @id @default(cuid())
+  name             String
+  sector           String
+  location         String
+  googleProfileUrl String?
+  googlePlaceId    String?
+  website          String?
+  phoneNumber      String?
+  rating           Float?
+  reviewCount      Int?
+  address          String?
+  createdAt        DateTime     @default(now())
+  assessments      Assessment[]
+}
+
+model Assessment {
+  id                 String      @id @default(cuid())
+  businessId         String
+  business           Business    @relation(fields: [businessId], references: [id])
+  userName           String
+  userPhone          String
+  initialScore       Int
+  scoreBreakdown     Json
+  currentState       String?
+  keyStrengths       Json?
+  gaps               Json?
+  answers            Json?
+  aiRecommendations  Json?
+  certificateUrl     String?
+  paymentStatus      String      @default("pending")
+  paymentRef         String?
+  paymentPhone       String?
+  createdAt          DateTime    @default(now())
+  completedAt        DateTime?
+  downloadedAt       DateTime?
+  certificate        Certificate?
+}
+
+model Certificate {
+  id             String     @id @default(cuid())
+  assessmentId   String     @unique
+  assessment     Assessment @relation(fields: [assessmentId], references: [id])
+  filePath       String
+  downloadCount  Int        @default(0)
+  createdAt      DateTime   @default(now())
+}
