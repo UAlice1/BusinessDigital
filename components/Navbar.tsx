@@ -42,7 +42,7 @@ export default function Navbar() {
       >
         {/* Pill — absolutely centered */}
         <nav className="mx-auto w-fit flex items-center gap-1 bg-white border border-gray-200 rounded-full px-3 py-1.5 shadow-md">
-          <Link href="/" className="flex items-center gap-1 pr-3 mr-1 border-r border-gray-200">
+          <Link href="/" className="flex items-center gap-1 pr-3 mr-1">
             <Image
               src="/images/pryro.png"
               alt="Pryro logo"

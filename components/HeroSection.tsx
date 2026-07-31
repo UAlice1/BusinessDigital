@@ -42,23 +42,6 @@ export default function HeroSection({ onSelect, isLoading }: Props) {
         <p className="text-center text-gray-300 text-xs mt-4">
           The business must be registered on Google to be assessed
         </p>
-
-        {/* Quick links */}
-        <div className="flex items-center justify-center gap-6 mt-6">
-          {[
-            { label: 'How It Works', href: '/how-it-works' },
-            { label: 'Pricing',      href: '/pricing'      },
-            { label: 'About',        href: '/about'        },
-          ].map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              className="text-sm text-gray-400 hover:text-primary transition-colors font-medium"
-            >
-              {label}
-            </a>
-          ))}
-        </div>
       </div>
 
     </section>

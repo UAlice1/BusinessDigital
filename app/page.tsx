@@ -54,10 +54,23 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white flex flex-col">
       <Navbar />
-      <div className="pt-0">
+      <div className="flex-1 pt-0">
         <HeroSection onSelect={handleBusinessSelected} isLoading={isCreatingAssessment} />
+      </div>
+
+      {/* Footer links */}
+      <div className="py-4 flex items-center justify-center gap-6">
+        {[
+          { label: 'How It Works', href: '/how-it-works' },
+          { label: 'Pricing',      href: '/pricing'      },
+          { label: 'About',        href: '/about'        },
+        ].map(({ label, href }) => (
+          <a key={label} href={href} className="text-xs text-gray-400 hover:text-primary transition-colors font-medium">
+            {label}
+          </a>
+        ))}
       </div>
 
       {/* Payment modal appears immediately after business is selected */}
